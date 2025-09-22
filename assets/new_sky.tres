@@ -1,0 +1,6 @@
+[gd_resource type="Sky" load_steps=2 format=3 uid="uid://c2hrtiwujbqo4"]
+
+[ext_resource type="Material" uid="uid://d2krf3d3rd73h" path="res://assets/new_procedural_sky_material.tres" id="1_skwqg"]
+
+[resource]
+sky_material = ExtResource("1_skwqg")
