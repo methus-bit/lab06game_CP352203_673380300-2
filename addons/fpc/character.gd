@@ -141,6 +141,10 @@ var mouseInput : Vector2 = Vector2(0,0)
 
 #region Main Control Flow
 
+func _input(event: InputEvent):
+	if (Input.mouse_mode != Input.MOUSE_MODE_CAPTURED) and event is InputEventMouseButton: 
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 func _ready():
 	#It is safe to comment this line if your game doesn't start with the mouse captured
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
