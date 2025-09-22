@@ -108,7 +108,7 @@ extends CharacterBody3D
 ## Enables an immersive animation when the player jumps and hits the ground.
 @export var jump_animation : bool = true
 ## This determines wether the player can use the pause button, not wether the game will actually pause.
-@export var pausing_enabled : bool = true
+@export var pausing_enabled : bool = false
 ## Use with caution.
 @export var gravity_enabled : bool = true
 ## If your game changes the gravity value during gameplay, check this property to allow the player to experience the change in gravity.
@@ -140,6 +140,12 @@ var mouseInput : Vector2 = Vector2(0,0)
 
 
 #region Main Control Flow
+
+func _input(event: InputEvent):
+	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED and event is InputEventMouseButton:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	elif Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and event.is_action_pressed("ui_cancel"): # Assuming "ui_cancel" is mapped to Escape
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _ready():
 	#It is safe to comment this line if your game doesn't start with the mouse captured
